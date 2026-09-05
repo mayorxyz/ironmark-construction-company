@@ -94,7 +94,7 @@ export default function Lightbox({ images, alts, index, onClose, onNavigate }: L
         </button>
       </div>
 
-      <p className="pb-6 text-center font-mono text-[11px] tracking-[0.2em] text-white/40 uppercase">
+      <p className="px-5 pb-6 text-center font-mono text-[11px] tracking-[0.2em] text-white/40 uppercase">
         {alts[index] ?? ""}
       </p>
     </motion.div>

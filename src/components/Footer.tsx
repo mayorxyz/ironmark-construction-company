@@ -135,7 +135,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="container-x flex flex-col items-center justify-between gap-3 py-6 sm:flex-row">
+        <div className="container-x flex flex-col items-center justify-between gap-3 py-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:flex-row sm:pb-6">
           <p className="font-mono text-[11px] tracking-wider text-white/40">
             © {new Date().getFullYear()} Ironmark Construction Group. All rights reserved.
           </p>

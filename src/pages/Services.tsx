@@ -20,7 +20,7 @@ function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-controls={`faq-${index}`}
-        className="flex w-full cursor-pointer items-center justify-between gap-6 px-6 py-5 text-left transition-colors hover:bg-cloud"
+        className="flex w-full cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-cloud sm:gap-6 sm:px-6 sm:py-5"
       >
         <span className="flex items-baseline gap-4">
           <span className="font-mono text-[11px] font-bold text-safety-dark">
@@ -50,7 +50,7 @@ function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
             transition={{ duration: reduce ? 0 : 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="overflow-hidden"
           >
-            <p className="border-t border-line px-6 py-5 pl-[4.4rem] text-[15px] leading-relaxed text-concrete/70">
+            <p className="border-t border-line px-5 py-4 pl-5 text-[15px] leading-relaxed text-concrete/70 sm:px-6 sm:py-5 sm:pl-[4.4rem]">
               {a}
             </p>
           </motion.div>

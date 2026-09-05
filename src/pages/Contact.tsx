@@ -105,7 +105,7 @@ export default function Contact() {
           {/* --- left: info --- */}
           <div className="space-y-5">
             <Reveal>
-              <div className="border border-line bg-white p-7">
+              <div className="border border-line bg-white p-6 sm:p-7">
                 <h2 className="font-display text-xl font-extrabold tracking-tight text-concrete uppercase">
                   Direct lines
                 </h2>
@@ -162,7 +162,7 @@ export default function Contact() {
             </Reveal>
 
             <Reveal delay={0.1}>
-              <div className="border border-line bg-white p-7">
+              <div className="border border-line bg-white p-6 sm:p-7">
                 <h3 className="font-mono text-[11px] font-medium tracking-[0.24em] text-concrete/50 uppercase">
                   Service area
                 </h3>

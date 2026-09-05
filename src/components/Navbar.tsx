@@ -41,14 +41,14 @@ export default function Navbar() {
             : "bg-gradient-to-b from-ink/70 to-transparent"
         }`}
       >
-        <nav className="container-x flex h-[72px] items-center justify-between gap-6" aria-label="Primary">
-          <Link to="/" className="flex items-center gap-3" aria-label="Ironmark Construction Group — home">
-            <Logo className="h-10 w-10" />
-            <span className="leading-none">
-              <span className="block font-display text-[17px] font-extrabold tracking-wide text-white">
+        <nav className="container-x flex h-[72px] items-center justify-between gap-3 sm:gap-6" aria-label="Primary">
+          <Link to="/" className="flex min-w-0 items-center gap-2.5 sm:gap-3" aria-label="Ironmark Construction Group — home">
+            <Logo className="h-9 w-9 shrink-0 sm:h-10 sm:w-10" />
+            <span className="min-w-0 leading-none">
+              <span className="block font-display text-[15px] font-extrabold tracking-wide text-white sm:text-[17px]">
                 IRONMARK
               </span>
-              <span className="mt-1 block font-mono text-[9px] tracking-[0.3em] text-white/55 uppercase">
+              <span className="mt-1 block truncate font-mono text-[9px] tracking-[0.18em] text-white/55 uppercase sm:tracking-[0.3em]">
                 Construction Group
               </span>
             </span>
@@ -107,7 +107,7 @@ export default function Navbar() {
             exit={{ opacity: 0 }}
             transition={{ duration: reduce ? 0 : 0.25 }}
           >
-            <div className="grid-lines-dark relative flex flex-1 flex-col justify-center px-8 pt-20">
+            <div className="grid-lines-dark relative flex min-h-0 flex-1 flex-col justify-center overflow-y-auto px-6 pt-24 pb-6 sm:px-8">
               <div className="flex flex-col gap-1">
                 {LINKS.map((l, i) => (
                   <motion.div
@@ -120,7 +120,7 @@ export default function Navbar() {
                       to={l.to}
                       end={l.to === "/"}
                       className={({ isActive }) =>
-                        `group flex items-baseline gap-4 border-b border-white/10 py-4 font-display text-3xl font-extrabold tracking-tight uppercase transition-colors ${
+                        `group flex min-h-[56px] items-baseline gap-4 border-b border-white/10 py-4 font-display text-[26px] font-extrabold tracking-tight uppercase transition-colors sm:text-3xl ${
                           isActive ? "text-safety" : "text-white hover:text-safety"
                         }`
                       }
