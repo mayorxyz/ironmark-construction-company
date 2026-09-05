@@ -37,7 +37,7 @@ export default function ProjectDetail() {
   return (
     <>
       {/* --- hero --- */}
-      <section className="relative flex min-h-[56vh] flex-col justify-end overflow-hidden bg-ink pt-32">
+      <section className="relative flex min-h-[56vh] flex-col justify-end overflow-hidden bg-ink pt-28 sm:pt-32">
         <img
           src={project.image}
           alt={`${project.name} — ${project.category} project in ${project.location}`}
@@ -108,7 +108,7 @@ export default function ProjectDetail() {
 
           <div>
             <Reveal delay={0.15}>
-              <aside className="border border-line bg-white p-7">
+              <aside className="border border-line bg-white p-6 sm:p-7">
                 <p className="font-mono text-[11px] tracking-[0.24em] text-concrete/45 uppercase">
                   Project brief
                 </p>

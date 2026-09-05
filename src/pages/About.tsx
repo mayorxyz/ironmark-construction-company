@@ -151,7 +151,7 @@ export default function About() {
           <div className="mt-14 grid gap-px overflow-hidden border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-5">
             {VALUES.map((v, i) => (
               <Reveal key={v.name} delay={i * 0.07} className="bg-concrete-deep">
-                <div className="group h-full bg-concrete-deep p-7 transition-colors duration-300 hover:bg-concrete">
+                <div className="group h-full bg-concrete-deep p-6 transition-colors duration-300 hover:bg-concrete sm:p-7">
                   <Icon name={v.icon} className="h-7 w-7 text-safety" />
                   <h3 className="mt-5 font-display text-lg font-extrabold tracking-tight text-white uppercase">
                     {v.name}

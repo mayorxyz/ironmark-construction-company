@@ -96,7 +96,7 @@ body {
 }
 
 .field {
-  @apply w-full border border-concrete/20 bg-white px-4 py-3 font-body text-[15px] text-concrete transition-colors duration-200 outline-none placeholder:text-muted focus:border-safety;
+  @apply w-full border border-concrete/20 bg-white px-4 py-3 font-body text-base text-concrete transition-colors duration-200 outline-none placeholder:text-muted focus:border-safety sm:text-[15px];
 }
 
 .field-label {

@@ -34,7 +34,7 @@ function Testimonials() {
 
   return (
     <section
-      className="noise relative overflow-hidden bg-concrete-deep py-24"
+      className="noise relative overflow-hidden bg-concrete-deep py-16 sm:py-24"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -133,7 +133,7 @@ function QuoteCta() {
   };
 
   return (
-    <section className="relative overflow-hidden py-28 sm:py-32">
+    <section className="relative overflow-hidden py-20 sm:py-32">
       <img
         src={PROJECT_IMAGES.crane}
         alt=""
@@ -169,7 +169,7 @@ function QuoteCta() {
               placeholder="you@company.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="min-h-[48px] flex-1 border border-white/25 bg-white/10 px-5 py-3 text-[15px] text-white outline-none backdrop-blur-sm transition-colors placeholder:text-white/40 focus:border-safety"
+              className="min-h-[48px] flex-1 border border-white/25 bg-white/10 px-5 py-3 text-base text-white outline-none backdrop-blur-sm transition-colors placeholder:text-white/40 focus:border-safety sm:text-[15px]"
             />
             <button type="submit" className="btn-primary shrink-0">
               Request Quote
@@ -238,7 +238,7 @@ export default function Home() {
       </section>
 
       {/* ---------- services ---------- */}
-      <section className="grid-lines relative bg-cloud py-24" id="services">
+      <section className="grid-lines relative bg-cloud py-16 sm:py-24" id="services">
         <div className="container-x">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeading
@@ -260,7 +260,7 @@ export default function Home() {
               <Reveal key={s.id} delay={(i % 3) * 0.1}>
                 <Link
                   to="/services"
-                  className="group relative block h-full border border-line bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:border-concrete/25 hover:shadow-[0_18px_44px_rgba(26,26,26,0.12)]"
+                  className="group relative block h-full border border-line bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-concrete/25 hover:shadow-[0_18px_44px_rgba(26,26,26,0.12)] sm:p-8"
                 >
                   <span
                     className="absolute left-0 top-0 h-full w-1 origin-top scale-y-0 bg-safety transition-transform duration-300 group-hover:scale-y-100"
@@ -291,7 +291,7 @@ export default function Home() {
       </section>
 
       {/* ---------- featured projects ---------- */}
-      <section className="relative bg-white py-24">
+      <section className="relative bg-white py-16 sm:py-24">
         <div className="container-x">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeading
@@ -382,7 +382,7 @@ export default function Home() {
       </section>
 
       {/* ---------- safety ---------- */}
-      <section className="grid-lines relative border-y border-line bg-cloud py-24">
+      <section className="grid-lines relative border-y border-line bg-cloud py-16 sm:py-24">
         <div className="container-x grid gap-14 lg:grid-cols-2 lg:gap-20">
           <div>
             <SectionHeading

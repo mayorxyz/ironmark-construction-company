@@ -12,7 +12,7 @@ interface PageHeaderProps {
 /** Dark industrial page opener used by every subpage. */
 export default function PageHeader({ code, label, title, description, children }: PageHeaderProps) {
   return (
-    <section className="noise relative overflow-hidden bg-concrete-deep pt-36 pb-14 sm:pt-44 sm:pb-16">
+    <section className="noise relative overflow-hidden bg-concrete-deep pt-32 pb-14 sm:pt-44 sm:pb-16">
       <div className="grid-lines-dark absolute inset-0" aria-hidden="true" />
       <div
         className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-safety/10 blur-3xl"

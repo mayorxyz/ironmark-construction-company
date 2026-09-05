@@ -100,7 +100,7 @@ export default function ProjectHero() {
 
         <h1 className="mt-7 font-display font-extrabold tracking-tight text-white uppercase">
           <motion.span
-            className="block text-[clamp(2.3rem,10vw,7.2rem)] leading-[0.95]"
+            className="block text-[clamp(1.9rem,10vw,7.2rem)] leading-[0.95]"
             initial={reduce ? false : { opacity: 0, y: 26 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: reduce ? 0 : 0.7, delay: 0.25 }}
@@ -111,7 +111,7 @@ export default function ProjectHero() {
             <AnimatePresence mode="wait">
               <motion.span
                 key={activeIndex}
-                className="block whitespace-nowrap text-[clamp(2.3rem,10vw,7.2rem)] leading-[1.06] text-safety"
+                className="block whitespace-nowrap text-[clamp(1.9rem,10vw,7.2rem)] leading-[1.06] text-safety"
                 initial={{ opacity: 0, y: reduce ? 0 : 0.55, filter: reduce ? "none" : "blur(4px)" }}
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 exit={{ opacity: 0, y: reduce ? 0 : -0.4, filter: reduce ? "none" : "blur(4px)" }}
@@ -150,7 +150,7 @@ export default function ProjectHero() {
 
       {/* --- bottom bar: caption · scroll cue · slide controls --- */}
       <div className="absolute inset-x-0 bottom-0 z-10 border-t border-white/12">
-        <div className="container-x flex items-center justify-between gap-6 py-4">
+        <div className="container-x flex items-center justify-center gap-6 py-4 sm:justify-between">
           <div className="hidden min-w-0 items-center gap-3 sm:flex">
             <span className="h-1.5 w-1.5 shrink-0 bg-safety" aria-hidden="true" />
             <AnimatePresence mode="wait">
