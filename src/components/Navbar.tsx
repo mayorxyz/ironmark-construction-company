@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Icon, Logo } from "./Icons";
@@ -16,8 +16,22 @@ const LINKS = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const justOpenedRef = useRef(false);
   const location = useLocation();
   const reduce = useReducedMotion();
+
+  const toggleMenu = () => {
+    justOpenedRef.current = true;
+    setOpen((v) => !v);
+    setTimeout(() => {
+      justOpenedRef.current = false;
+    }, 0);
+  };
+
+  const handleOverlayClick = (e: React.MouseEvent) => {
+    if (justOpenedRef.current) return;
+    if (e.target === e.currentTarget) setOpen(false);
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -35,21 +49,21 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        className={`fixed inset-x-0 top-0 z-[90] transition-all duration-300 ${
           scrolled
             ? "bg-concrete-deep/95 shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-sm"
             : "bg-gradient-to-b from-ink/70 to-transparent"
         }`}
       >
-        <nav className="container-x flex h-[72px] items-center justify-between gap-3 sm:gap-6" aria-label="Primary">
-          <Link to="/" className="flex min-w-0 items-center gap-2.5 sm:gap-3" aria-label="Ironmark Construction Group — home">
-            <Logo className="h-9 w-9 shrink-0 sm:h-10 sm:w-10" />
+        <nav className="container-x flex h-[72px] items-center justify-between gap-2 sm:gap-6" aria-label="Primary">
+          <Link to="/" className="flex min-w-0 flex-1 items-center gap-2 sm:flex-initial sm:gap-3" aria-label="Ironmark Construction Group — home">
+            <Logo className="h-8 w-8 shrink-0 sm:h-10 sm:w-10" />
             <span className="min-w-0 leading-none">
-              <span className="block font-display text-[15px] font-extrabold tracking-wide text-white sm:text-[17px]">
-                IRONMARK
+              <span className="block truncate font-display text-[13px] font-extrabold tracking-wide text-white xs:text-[14px] sm:text-[17px]">
+                IRONMARK CONSTRUCTION
               </span>
-              <span className="mt-1 block truncate font-mono text-[9px] tracking-[0.18em] text-white/55 uppercase sm:tracking-[0.3em]">
-                Construction Group
+              <span className="mt-1 block truncate font-mono text-[8px] tracking-[0.14em] text-white/55 uppercase sm:text-[9px] sm:tracking-[0.3em]">
+                Group
               </span>
             </span>
           </Link>
@@ -80,19 +94,19 @@ export default function Navbar() {
             ))}
           </div>
 
-          <div className="flex items-center gap-3">
-            <Link to="/contact" className="btn-primary hidden !px-5 !py-2.5 sm:inline-flex">
+          <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
+            <Link to="/contact" className="btn-primary inline-flex !px-3 !py-2 !text-[11px] sm:!px-5 sm:!py-2.5 sm:!text-sm">
               Get a Quote
-              <Icon name="arrow-right" className="h-4 w-4" />
+              <Icon name="arrow-right" className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
             </Link>
             <button
               type="button"
-              onClick={() => setOpen((v) => !v)}
+              onClick={toggleMenu}
               aria-expanded={open}
               aria-label={open ? "Close menu" : "Open menu"}
-              className="flex h-11 w-11 cursor-pointer items-center justify-center border border-white/25 text-white transition-colors duration-200 hover:border-safety hover:text-safety lg:hidden"
+              className="relative z-10 flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center border border-white/40 bg-white/5 text-white transition-colors duration-200 hover:border-safety hover:text-safety sm:h-11 sm:w-11 lg:hidden"
             >
-              <Icon name={open ? "close" : "menu"} className="h-5 w-5" />
+              <Icon name={open ? "close" : "menu"} className="h-5 w-5 text-white" />
             </button>
           </div>
         </nav>
@@ -101,13 +115,17 @@ export default function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="noise fixed inset-0 z-40 flex flex-col bg-concrete-deep lg:hidden"
+            className="noise fixed inset-0 z-[80] flex flex-col overflow-y-auto bg-concrete-deep lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: reduce ? 0 : 0.25 }}
+            onClick={handleOverlayClick}
           >
-            <div className="grid-lines-dark relative flex min-h-0 flex-1 flex-col justify-center overflow-y-auto px-6 pt-24 pb-6 sm:px-8">
+            <div
+              className="grid-lines-dark relative flex flex-col px-6 pt-24 pb-10 sm:px-8"
+              onClick={handleOverlayClick}
+            >
               <div className="flex flex-col gap-1">
                 {LINKS.map((l, i) => (
                   <motion.div
@@ -119,6 +137,7 @@ export default function Navbar() {
                     <NavLink
                       to={l.to}
                       end={l.to === "/"}
+                      onClick={() => setOpen(false)}
                       className={({ isActive }) =>
                         `group flex min-h-[56px] items-baseline gap-4 border-b border-white/10 py-4 font-display text-[26px] font-extrabold tracking-tight uppercase transition-colors sm:text-3xl ${
                           isActive ? "text-safety" : "text-white hover:text-safety"
@@ -140,7 +159,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: reduce ? 0 : 0.42, duration: 0.4 }}
               >
-                <Link to="/contact" className="btn-primary w-full">
+                <Link to="/contact" className="btn-primary w-full" onClick={() => setOpen(false)}>
                   Get a Quote
                   <Icon name="arrow-right" className="h-4 w-4" />
                 </Link>

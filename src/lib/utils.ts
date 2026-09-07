@@ -18,14 +18,33 @@ export function usePageTitle(title: string): void {
   }, [title]);
 }
 
-/** Locks body scroll while `locked` is true (mobile menu / lightbox). */
+/**
+ * Locks body scroll while `locked` is true (mobile menu / lightbox).
+ *
+ * - Locks overflow on both html and body (iOS Safari requires both)
+ * - Plain overflow:hidden — no position:fixed scheme, so the layout never
+ *   shifts while the menu is open
+ * - Restores previous inline styles on cleanup
+ */
 export function useBodyLock(locked: boolean): void {
   useEffect(() => {
     if (!locked) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+
+    const html = document.documentElement;
+    const body = document.body;
+
+    const prevHtmlOverflow = html.style.overflow;
+    const prevBodyOverflow = body.style.overflow;
+
+    // Simple, reliable lock: overflow hidden on both html and body (iOS Safari
+    // needs both). No position:fixed / top offset — that scheme shifts the
+    // layout on mobile and can push the menu's content out of the viewport.
+    html.style.overflow = "hidden";
+    body.style.overflow = "hidden";
+
     return () => {
-      document.body.style.overflow = prev;
+      html.style.overflow = prevHtmlOverflow;
+      body.style.overflow = prevBodyOverflow;
     };
   }, [locked]);
 }

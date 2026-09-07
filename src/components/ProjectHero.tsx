@@ -99,29 +99,32 @@ export default function ProjectHero() {
         </motion.div>
 
         <h1 className="mt-7 font-display font-extrabold tracking-tight text-white uppercase">
-          <motion.span
-            className="block text-[clamp(1.9rem,10vw,7.2rem)] leading-[0.95]"
-            initial={reduce ? false : { opacity: 0, y: 26 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: reduce ? 0 : 0.7, delay: 0.25 }}
-          >
-            Building
-          </motion.span>
-          <span className="mt-1 block h-[1.06em] overflow-hidden">
-            <AnimatePresence mode="wait">
-              <motion.span
-                key={activeIndex}
-                className="block whitespace-nowrap text-[clamp(1.9rem,10vw,7.2rem)] leading-[1.06] text-safety"
-                initial={{ opacity: 0, y: reduce ? 0 : 0.55, filter: reduce ? "none" : "blur(4px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                exit={{ opacity: 0, y: reduce ? 0 : -0.4, filter: reduce ? "none" : "blur(4px)" }}
-                transition={{ duration: reduce ? 0 : 0.5, ease: [0.22, 1, 0.36, 1] }}
-              >
-                {slide.word}
-              </motion.span>
-            </AnimatePresence>
-          </span>
-        </h1>
+  <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+    <motion.span
+      className="text-[clamp(1.9rem,10vw,7.2rem)] leading-[0.95]"
+      initial={reduce ? false : { opacity: 0, y: 26 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: reduce ? 0 : 0.7, delay: 0.25 }}
+    >
+      Building
+    </motion.span>
+
+    <span className="inline-block overflow-hidden text-[clamp(1.9rem,10vw,7.2rem)] leading-[1.06]">
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={activeIndex}
+          className="block whitespace-nowrap text-safety"
+          initial={{ opacity: 0, y: reduce ? 0 : 0.55, filter: reduce ? "none" : "blur(4px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          exit={{ opacity: 0, y: reduce ? 0 : -0.4, filter: reduce ? "none" : "blur(4px)" }}
+          transition={{ duration: reduce ? 0 : 0.5, ease: [0.22, 1, 0.36, 1] }}
+        >
+          {slide.word}
+        </motion.span>
+      </AnimatePresence>
+    </span>
+  </div>
+</h1>
 
         <motion.p
           className="mt-6 font-mono text-[11px] tracking-[0.32em] text-white/60 uppercase sm:text-[12px]"

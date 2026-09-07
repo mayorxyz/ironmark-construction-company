@@ -67,7 +67,7 @@ body {
   background-size: 44px 44px;
 }
 
-.noise {
+.noise:not(.fixed) {
   position: relative;
 }
 .noise::after {
